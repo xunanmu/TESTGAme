@@ -12,7 +12,9 @@ ASphereBase::ASphereBase()
 	/*默认输出*/
 	bIsInput = true;
 	/*默认初始速度*/
-	SphereSpeed = 200;
+	SphereSpeed = 300;
+	SphereSpeedMin = 300;
+	SphereSpeedMax = 500;
 
 	/*球形网格组件*/
 	SphereMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT(__FUNCTION__));
@@ -43,7 +45,7 @@ void ASphereBase::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	/*TODO旧api先学习到时候改成新api SetPhysicsAngularVelocityInDegrees*/
-	if (AngularVector != FVector(0.f))
+	if (bIsInput && AngularVector != FVector(0.f))
 	{
 		SphereMeshComponent->SetPhysicsAngularVelocityInDegrees(AngularVector);
 	}
@@ -57,6 +59,8 @@ void ASphereBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	/*绑定按键*/
 	PlayerInputComponent->BindAxis("MoveForward",this,&ASphereBase::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight",this,&ASphereBase::MoveRight);
+	PlayerInputComponent->BindAction("SpeedUp",IE_Pressed,this,&ASphereBase::SpeedUp);
+	PlayerInputComponent->BindAction("SpeedLow",IE_Released,this,&ASphereBase::SpeedLow);
 }
 
 void ASphereBase::MoveForward(float value)
@@ -73,4 +77,14 @@ void ASphereBase::MoveRight(float value)
 	{
 		AngularVector.X = SphereSpeed*value;
 	}
+}
+
+void ASphereBase::SpeedUp()
+{
+		SphereSpeed =  SphereSpeedMax;
+}
+
+void ASphereBase::SpeedLow()
+{
+		SphereSpeed = SphereSpeedMin;
 }

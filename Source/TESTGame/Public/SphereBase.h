@@ -56,4 +56,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void MoveRight(float value);
+
+	UFUNCTION(BlueprintCallable)
+	void SpeedUp();
+
+	UFUNCTION(BlueprintCallable)
+	void SpeedLow();
 };
