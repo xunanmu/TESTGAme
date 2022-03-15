@@ -17,7 +17,7 @@ ASphereBase::ASphereBase()
 	SphereSpeedMax = 500;
 
 	/*球形网格组件*/
-	SphereMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT(__FUNCTION__));
+	SphereMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SphereMeshComponent"));
 	SphereMeshComponent->SetSimulatePhysics(true); /*开启物理模拟*/
 
 	/*相机的弹簧臂组件*/
