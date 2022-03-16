@@ -28,7 +28,7 @@ void ATESTGameGameModeBase::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 }
 
-void ATESTGameGameModeBase::SetPlayerLocation()
+void ATESTGameGameModeBase::SetPlayerLocation() const
 {
 	PlayPawn->SetActorLocation(CurrentStart);
 	/*把速度和角速度设置为0，使小球复活不动*/
@@ -36,10 +36,19 @@ void ATESTGameGameModeBase::SetPlayerLocation()
 	PlayPawn->SphereMeshComponent->SetPhysicsAngularVelocityInDegrees(FVector(0));
 	
 }
-void ATESTGameGameModeBase::SetPlayerLocation(FVector Start)
+void ATESTGameGameModeBase::SetPlayerLocation(FVector Start) const
 {
 	PlayPawn->SetActorLocation(Start);
 	/*把速度和角速度设置为0，使小球复活不动*/
 	PlayPawn->SphereMeshComponent->SetPhysicsLinearVelocity(FVector(0));
 	PlayPawn->SphereMeshComponent->SetPhysicsAngularVelocityInDegrees(FVector(0));
+}
+
+
+void  ATESTGameGameModeBase::SetCurrentStart(FVector Location)
+{
+	if(Location != FVector(0))
+	{
+		CurrentStart = Location;
+	}
 }

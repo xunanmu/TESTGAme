@@ -15,7 +15,7 @@ class TESTGAME_API AHitBoxBase : public AActor
 public:
 	// Sets default values for this actor's properties
 	AHitBoxBase();
-
+	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	UBoxComponent *HitBoxComponent;
 
@@ -28,7 +28,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	/*复活时的操作*/
-	virtual void OnHitSphere(class ASphereBase *sphere);
+	virtual void OnHitSphere(AActor *sphere);
 
 	UFUNCTION(BlueprintCallable)
 	void BeginHit(UPrimitiveComponent *OverlappUPrimitiveComponent,AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);

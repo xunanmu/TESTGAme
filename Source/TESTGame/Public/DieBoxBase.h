@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -21,6 +21,6 @@ public:
 	/*累计死亡次数*/
 	static unsigned count;
 public:
-	virtual void OnHitSphere(ASphereBase* sphere) override;
+	virtual void OnHitSphere(AActor* sphere) override;
 	
 };

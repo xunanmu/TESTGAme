@@ -7,7 +7,7 @@
 #include "Kismet/KismetSystemLibrary.h"
 #include "TESTGame/GemeMode/TESTGameGameModeBase.h"
 
-void ADieBoxBase::OnHitSphere(ASphereBase* sphere)
+void ADieBoxBase::OnHitSphere(AActor* sphere)
 {
 	ATESTGameGameModeBase *GameModeBase= Cast<ATESTGameGameModeBase>(GetWorld()->GetAuthGameMode());
 	/*打印复活次数*/

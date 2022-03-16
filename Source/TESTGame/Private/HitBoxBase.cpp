@@ -12,12 +12,13 @@ AHitBoxBase::AHitBoxBase()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	
 	/*碰撞组件*/
 	HitBoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("HitBox"));
 	/*触发器，两个物体相碰就调用*/
 	HitBoxComponent->OnComponentBeginOverlap.AddDynamic(this,&AHitBoxBase::BeginHit);
 }
+
 
 // Called when the game starts or when spawned
 void AHitBoxBase::BeginPlay()
@@ -41,7 +42,7 @@ void AHitBoxBase::BeginHit(UPrimitiveComponent *OverlappUPrimitiveComponent,AAct
 	}
 }
 
-void AHitBoxBase::OnHitSphere(ASphereBase* sphere)
+void AHitBoxBase::OnHitSphere(AActor* sphere)
 {
 	
 }

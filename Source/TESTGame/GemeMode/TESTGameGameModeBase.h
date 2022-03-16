@@ -25,6 +25,7 @@ public:
 
 	virtual  void Tick(float DeltaSeconds) override;
 public:
-	void  SetPlayerLocation();
-	void  SetPlayerLocation(FVector Start);
+	void  SetPlayerLocation() const;
+	void  SetPlayerLocation(FVector Start) const;
+	void  SetCurrentStart(FVector Location);
 };
