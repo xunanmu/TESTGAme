@@ -17,10 +17,14 @@ class TESTGAME_API ATESTGameGameModeBase : public AGameModeBase
 public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="PlayPawn")
 	ASphereBase *PlayPawn;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="PlayPawn")
+	FVector CurrentStart;
 public:
 	virtual void BeginPlay() override;
 
 	virtual  void Tick(float DeltaSeconds) override;
 public:
+	void  SetPlayerLocation();
 	void  SetPlayerLocation(FVector Start);
 };
